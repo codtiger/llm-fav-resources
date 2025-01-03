@@ -14,5 +14,11 @@ Test-Time Training for Abstract Reasoning](https://ekinakyurek.github.io/papers/
 Continuous Latent Space](https://arxiv.org/pdf/2412.06769)
 Training models to reason in latent space by taking last token embedding and feeding it back to the model without performing next word prection for a number of steps. Training is done by masking out output tokens one by one in each stage, instead allowing model to use latents and generate next latents freely.
 
+
+## Quantization
+* [Group-wise Precision Tuning Quantization (GPTQ)](https://arxiv.org/abs/2210.17323)
+* [Activation-Aware Layer Quantization (AWQ) ](https://arxiv.org/abs/2306.00978)
+* [Half-Quadratic Quantization](https://mobiusml.github.io/hqq_blog/)
+* [A Gentle Introduction to 8-bit Matrix Multiplication for transformers](https://huggingface.co/blog/hf-bitsandbytes-integration) by Tim Dettmers. A great introduction on how general weight quantization works across formats(bf16, int8, int16, etc.), importance of outlier features, scaling and usage with `accelerate` library
 ## Miscellaneous
 * [70b model training infrastructure](https://imbue.com/research/70b-infrastructure/) A startup company, Imbue, published this wonderful blog on their journey to set up an infrastructure of 4088 H100 GPUs to train a 70B model. Topics include network connections, GPU logs, diagnosis of errors and issues and variosu health check procedures.

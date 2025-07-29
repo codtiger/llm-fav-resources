@@ -25,6 +25,12 @@ A curated list of favorite resources and readings related to LLMs.
 - [Self-Adapting Language Models](https://arxiv.org/pdf/2506.10943)
   Adapting Language models to few-shot examples or unknown knowledge in the context using test-time training. Instructing the model to produce self-edit recipes(generating recipes for SFT, summaries or notes from new knowledge, etc.). Self-edits are used to fine-tune the model and the downstream accuracy are used as reward to optimize the model towards effective self-edits. It uses Rest_EM on-policy RL. Shows improvements over in-context learning.
 
+- [Learning without training: The implicit dynamics of in-context learning](https://arxiv.org/pdf/2507.16003)
+In-context learning from token prompts can be reduced to a weight update on the first linear layer after the contextual block(attention, rnn, etc.) which is dependent of contextual output with and without the context: $A(x) - A(C,x)$:
+
+$T_W(C, x)=T_{W+\Delta W(Y)}(C \backslash Y, x) \quad \text { where } \Delta W(Y)=\frac{(W \Delta A(Y)) A(C \backslash Y, x)^T}{\|A(C \backslash Y, x)\|^2}$
+> Where $ \Delta A(Y ) = A(C, x) − A(C\backslash Y, x) $ is the context vector associated to $Y$. Note that $\Delta W(Y)$ is rank 1 since $W \Delta A(Y) $ is a column vector and $A(C\backslash Y,x)^T$ is a row vector.
+
 ## Quantization
 
 - [Group-wise Precision Tuning Quantization (GPTQ)](https://arxiv.org/abs/2210.17323)
@@ -41,3 +47,5 @@ A curated list of favorite resources and readings related to LLMs.
 - [You could have designed state of the art positional encoding](https://huggingface.co/blog/designing-positional-encoding) A simple intuitive examination of positional encodings, why they were devised and how we ended up with Rotatary Positional Encodings.
 
 - [KV-cahing in nanoVLM ](https://huggingface.co/blog/kv-cache) A brief huggingface dive into how decoding would be performed by caching Key and Values in all attention blocks of a Vision-Language Model. With code example of decode and prefilling phase.
+
+- [On N-dimensional Rotary Positional Embeddings](https://jerryxio.ng/posts/nd-rope/) Visualization of ROPE with different parameters, and the extension to two or more dimensions + Vit experiments.

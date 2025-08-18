@@ -35,6 +35,11 @@ $T_W(C, x)=T_{W+\Delta W(Y)}(C \backslash Y, x) \quad \text { where } \Delta W(Y
 - [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](https://arxiv.org/abs/2502.11089)
   Triton [implementation](https://github.com/Noumena-Network/NSA-Test) by @xjtr
 
+## Tutorials
+
+- [Build a Large Language Model (From Scratch)](https://github.com/rasbt/LLMs-from-scratch)
+- [nanogpt](https://github.com/karpathy/nanoGPT) Purely Python small gpt implementation by Andrej Karpathy
+
 ## Quantization
 
 - [Group-wise Precision Tuning Quantization (GPTQ)](https://arxiv.org/abs/2210.17323)

@@ -7,10 +7,15 @@ A curated list of favorite resources and readings related to LLMs.
 - [Language Modeling Workshop](https://docs.google.com/presentation/d/179dpzWSQ9G7EAUlvaJdeE0av9PLuk9Rl33nfhHSJ4xI/edit#slide=id.g30a4c7e9678_0_0)[Neurips 2024]
   A comprehensive guide to nooks and crannies of lanuage modeling, from dataset curation, transformation and filtering to anecdotal knolwedge about hyperparameters, scaling models efficiently in terms of compute, and predicting evals of large models from smaller models with the same compute. On top of that, an amazing overview of SOTA popular post-training techniques. Some technical aspects of the work (e.g. optimization) is discussed but there are better dedicated resources out there. This is more of a "Advice for Experiments and Common Pitfalls".
 
+- [AI Engineering at Jane Street - John Crepezzi](https://www.youtube.com/watch?v=0ML7ZLMdcl4&pp=ygUXYWkgZW5naW5lZXIgamFuZSBzdHJlZXQ%3D) [AI Engineer 2025]
+  How Jane Street LLM Team managed to collect, fine-tune, and verify LLMs for OCaml, given the fact that they have a bigger codebase in this language than most other online open source data, and how they managed to make the model and developer-friendly and task-oriented, while their datasets more amenable to reinforcement learning and verifiable rewards.
+
 ## Papers
 
+- [ReLoRA: High-Rank Training Through
+  Low-Rank Updates](https://arxiv.org/pdf/2307.05695) How to pre-train with LORA and re-merge LORA weights every once in a while and reset optimizer. Outperforms pure pre-training, fine-tuning with LORA, all the way up to 1.4B models in experiments. A good starter on low rank training.
 - [The Surprising Effectiveness of
-  Test-Time Training for Abstract Reasoning](https://ekinakyurek.github.io/papers/ttt.pdf") Using ideas from test-time training in Computer Vision, synthesize examples to exploit test-time compute to fine-tune the model. Tackles the Arc Challenge showing improvements over plain fine-tuned models.
+  Test-Time Training for Abstract Reasoning](https://ekinakyurek.github.io/papers/ttt.pdf) Using ideas from test-time training in Computer Vision, synthesize examples to exploit test-time compute to fine-tune the model. Tackles the Arc Challenge showing improvements over plain fine-tuned models.
 - [Training Large Language Models to Reason in a
   Continuous Latent Space](https://arxiv.org/pdf/2412.06769)
   Training models to reason in latent space by taking last token embedding and feeding it back to the model without performing next word prection for a number of steps. Training is done by masking out output tokens one by one in each stage, instead allowing model to use latents and generate next latents freely.
@@ -39,6 +44,7 @@ $T_W(C, x)=T_{W+\Delta W(Y)}(C \backslash Y, x) \quad \text { where } \Delta W(Y
 
 - [Build a Large Language Model (From Scratch)](https://github.com/rasbt/LLMs-from-scratch)
 - [nanogpt](https://github.com/karpathy/nanoGPT) Purely Python small gpt implementation by Andrej Karpathy
+- [How to Scale Your Model: A Systems View of LLMs on TPUs](https://jax-ml.github.io/scaling-book/)
 
 ## Quantization
 
@@ -61,3 +67,22 @@ $T_W(C, x)=T_{W+\Delta W(Y)}(C \backslash Y, x) \quad \text { where } \Delta W(Y
 
 - [The Big LLM Architecture Comparison](https://magazine.sebastianraschka.com/p/the-big-llm-architecture-comparison)
   In depth comparison of archiectural difference of models (open source, open architecture) at various scales. Differences from MOE, transformer only, activation functions, normalization layers, Attention mechanism used, etc.
+
+- [Defeating Nondeterminism in LLM Inference](https://thinkingmachines.ai/blog/defeating-nondeterminism-in-llm-inference/) A quest to answer why batched requests to LLM APIs, or even local provider backends(vllm, sglang) provide non-deterministic results when running with different batch sizes. The answer lies in the nondeterministic order of reduction within RMSNorm, Matmul and attention kernels to accomodate undersaturated GPUs. This beautiful, yet simple, example, is a simple demonstration why batch invariance is important.
+
+```python
+import torch
+torch.set_default_device('cuda')
+
+B = 2048
+D = 4096
+a = torch.linspace(-1000, 1000, B*D).reshape(B, D)
+b = torch.linspace(-1000, 1000, D*D).reshape(D, D)
+# Doing a matrix vector multiplication by taking
+# the first element of the batch
+out1 = torch.mm(a[:1], b)
+# Doing a matrix matrix multiplication and then taking
+# the first element of the batch
+out2 = torch.mm(a, b)[:1]
+print((out1 - out2).abs().max()) # tensor(1669.2500, device='cuda:0')
+```

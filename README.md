@@ -55,6 +55,9 @@ $T_W(C, x)=T_{W+\Delta W(Y)}(C \backslash Y, x) \quad \text { where } \Delta W(Y
 
 ## Miscellaneous
 
+- [Attention is off by one](https://www.evanmiller.org/attention-is-off-by-one.html)
+  Must read on why sink attention is getting popular + source of many attention weight outliers
+
 - [70b model training infrastructure](https://imbue.com/research/70b-infrastructure/) A startup company, Imbue, published this wonderful blog on their journey to set up an infrastructure of 4088 H100 GPUs to train a 70B model. Topics include network connections, GPU logs, diagnosis of errors and issues and variosu health check procedures.
 - [Huggingface face Ultra-Scale Training Playbook](https://huggingface.co/spaces/nanotron/ultrascale-playbook) An interactive in-depth overview of different components of language models, nature of computation carried out, memory usage and paralleization technique following best training practices and a high-level illustration of techniques used in popular GPU kernels. A priceless blog for beginners to the performance and engineering aspects of training.
 - [Can Large Language Models Explain Their Internal Mechanisms?](https://pair.withgoogle.com/explorables/patchscopes/) A blog post, with accompanying research paper, on patching hidden representation of tokens dynamically in-place to study the behavior of LLMS, specifically the extent of context capture from earlier to later layers in transformers.
@@ -86,3 +89,5 @@ out1 = torch.mm(a[:1], b)
 out2 = torch.mm(a, b)[:1]
 print((out1 - out2).abs().max()) # tensor(1669.2500, device='cuda:0')
 ```
+
+- [LORA Without Regret](https://thinkingmachines.ai/blog/lora/) Batch size effect, best learning rates, layers where Lora should be applied, and lots of other practical notes for fine-tuning LLMs.

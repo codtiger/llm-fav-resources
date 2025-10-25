@@ -37,6 +37,11 @@ $T_W(C, x)=T_{W+\Delta W(Y)}(C \backslash Y, x) \quad \text { where } \Delta W(Y
 
 > Where $ \Delta A(Y ) = A(C, x) − A(C\backslash Y, x) $ is the context vector associated to $Y$. Note that $\Delta W(Y)$ is rank 1 since $W \Delta A(Y) $ is a column vector and $A(C\backslash Y,x)^T$ is a row vector.
 
+- [Reasoning with Sampling: Your Base Model is Smarter Than You Think](https://www.arxiv.org/pdf/2510.14901)
+  Reason using a Monte Carlo Markvo Chain extension of the power distribution of model log likelihood $p^a$ where heavier parts of the likelihood accrue more density by exponentiating the likelihood, leading to high probable regions being explored more than low confidence regions. Performance on par with RL for test-time compute and surpasses RL on reasoning for other tasks and on par with pass@k of base model on high $k$s, alleviating mode collapse and avoiding narrowing of exploration space.
+
+- [Continual Learning via Sparse Memory Finetuning](https://arxiv.org/pdf/2510.15103)
+
 - [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](https://arxiv.org/abs/2502.11089)
   Triton [implementation](https://github.com/Noumena-Network/NSA-Test) by @xjtr
 
@@ -91,3 +96,5 @@ print((out1 - out2).abs().max()) # tensor(1669.2500, device='cuda:0')
 ```
 
 - [LORA Without Regret](https://thinkingmachines.ai/blog/lora/) Batch size effect, best learning rates, layers where Lora should be applied, and lots of other practical notes for fine-tuning LLMs.
+
+- [Contiunal Learning by Jessy Lin](https://jessylin.com/2025/10/20/continual-learning/) Great high level overview of how continual learning can be approached through the lens of generalization from unstructured new data and intergration(choosting what to forget or keep from) old data.

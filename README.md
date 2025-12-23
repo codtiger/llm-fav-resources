@@ -12,6 +12,7 @@ A curated list of favorite resources and readings related to LLMs.
 
 ## Papers
 
+- [Efficient Streaming Language Models with Attention Sinks](https://doi.org/10.48550/arXiv.2309.17453)
 - [ReLoRA: High-Rank Training Through
   Low-Rank Updates](https://arxiv.org/pdf/2307.05695) How to pre-train with LORA and re-merge LORA weights every once in a while and reset optimizer. Outperforms pure pre-training, fine-tuning with LORA, all the way up to 1.4B models in experiments. A good starter on low rank training.
 - [The Surprising Effectiveness of
@@ -98,3 +99,8 @@ print((out1 - out2).abs().max()) # tensor(1669.2500, device='cuda:0')
 - [LORA Without Regret](https://thinkingmachines.ai/blog/lora/) Batch size effect, best learning rates, layers where Lora should be applied, and lots of other practical notes for fine-tuning LLMs.
 
 - [Contiunal Learning by Jessy Lin](https://jessylin.com/2025/10/20/continual-learning/) Great high level overview of how continual learning can be approached through the lens of generalization from unstructured new data and intergration(choosting what to forget or keep from) old data.
+
+- [Continuous batching by Huggingface](https://huggingface.co/blog/continuous_batching) Explains how KV caching, chunked prefilling, and dynamic rescheduling of batches enables backends such as vLLM or sgLang to serve LLMs at very high throughput.
+
+- [Faster-Transformers](https://huggingface.co/blog/faster-transformers)
+  High-level overview of innovations used in the LLM and transformer spaces to serve large models on one or a couple of GPUs with lower memory requirements and better latencies across batched queries. This blog is tailored to GPT-OSS models and reviews many additions to the HF family such as pre-compiled kernels library, MXFP4 quantization, and experimental continuous batching support along with standard tensor and expert parallel for inference.

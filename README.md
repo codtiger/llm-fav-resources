@@ -46,6 +46,9 @@ $T_W(C, x)=T_{W+\Delta W(Y)}(C \backslash Y, x) \quad \text { where } \Delta W(Y
 - [Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention](https://arxiv.org/abs/2502.11089)
   Triton [implementation](https://github.com/Noumena-Network/NSA-Test) by @xjtr
 
+- [Titans: Learning to memorize at Test Time](https://arxiv.org/abs/2501.00663)
+- [Less is More: Recursive Reasoning with Tiny Networks](https://arxiv.org/pdf/2510.04871): An improvement to Hierarchial Reasoning models using a simplified 2-layer approach for recursive reasoning.
+
 ## Tutorials
 
 - [Build a Large Language Model (From Scratch)](https://github.com/rasbt/LLMs-from-scratch)
@@ -104,3 +107,13 @@ print((out1 - out2).abs().max()) # tensor(1669.2500, device='cuda:0')
 
 - [Faster-Transformers](https://huggingface.co/blog/faster-transformers)
   High-level overview of innovations used in the LLM and transformer spaces to serve large models on one or a couple of GPUs with lower memory requirements and better latencies across batched queries. This blog is tailored to GPT-OSS models and reviews many additions to the HF family such as pre-compiled kernels library, MXFP4 quantization, and experimental continuous batching support along with standard tensor and expert parallel for inference.
+
+- [How LLMs Scaled from 512 to 2M Context: A Technical Deep Dive
+](https://amaarora.github.io/posts/2025-09-21-rope-context-extension.html)
+
+- [Quantization from the ground up
+](https://ngrok.com/blog/quantization)
+
+-[LLM Inference Economics From First Principles](https://www.tensoreconomics.com/p/llm-inference-economics-from-first)
+A great write-up with full mathematical calculation clarity on the economics of serving a Llama3.3 model. Calculation of exact model parameters, total number of floating point operations, and analysis of throughput and cost while increasing sequence length and batch size. Best available resource for the economics of these models.
+

@@ -12,6 +12,8 @@ A curated list of favorite resources and readings related to LLMs.
 
 ## Papers
 
+- [Mega: Moving Average Equipped Gated Attention](https://arxiv.org/pdf/2209.10655)
+    Collection of interesting ideas combining gated networks with EMA representation of input sequences combined with single-head attention. A general case of S4 and Space-State Models. Shown competitive performance to the best transformer architectures at the time and S4. Dubious if this works for very long context or if it scales beyond ~500M params.
 - [Efficient Streaming Language Models with Attention Sinks](https://doi.org/10.48550/arXiv.2309.17453)
 - [ReLoRA: High-Rank Training Through
   Low-Rank Updates](https://arxiv.org/pdf/2307.05695) How to pre-train with LORA and re-merge LORA weights every once in a while and reset optimizer. Outperforms pure pre-training, fine-tuning with LORA, all the way up to 1.4B models in experiments. A good starter on low rank training.
@@ -48,6 +50,7 @@ $T_W(C, x)=T_{W+\Delta W(Y)}(C \backslash Y, x) \quad \text { where } \Delta W(Y
 
 - [Titans: Learning to memorize at Test Time](https://arxiv.org/abs/2501.00663)
 - [Less is More: Recursive Reasoning with Tiny Networks](https://arxiv.org/pdf/2510.04871): An improvement to Hierarchial Reasoning models using a simplified 2-layer approach for recursive reasoning.
+- [ReAct: synergizing reasoning and acting in language models](https://arxiv.org/abs/2210.03629) One of the first papers demonstrating the loop of reasoning and acting(tool calling etc.) in LLMS shown to be effective when interleaved.
 
 ## Tutorials
 
@@ -114,6 +117,11 @@ print((out1 - out2).abs().max()) # tensor(1669.2500, device='cuda:0')
 - [Quantization from the ground up
 ](https://ngrok.com/blog/quantization)
 
--[LLM Inference Economics From First Principles](https://www.tensoreconomics.com/p/llm-inference-economics-from-first)
+- [LLM Inference Economics From First Principles](https://www.tensoreconomics.com/p/llm-inference-economics-from-first)
 A great write-up with full mathematical calculation clarity on the economics of serving a Llama3.3 model. Calculation of exact model parameters, total number of floating point operations, and analysis of throughput and cost while increasing sequence length and batch size. Best available resource for the economics of these models.
 
+- [Using group theory to explore the space of positional encodings for attention](https://blog.janestreet.com/using-group-theory-to-explore-positional-encodings-attention/)
+A beautiful look at positional encodings from Jane Street through the lens of group theory. Shows the design space of positional encodings for a sequence with desirable causal and logical properties are limited to certain choices, deriving NoPE and RoPE along the way.
+
+- [Fourier Feature Encoding](https://sair.synerise.com/fourier-feature-encoding/)
+A detour from LLM-related material, but shows the nice connection of sinusodial positional embeddings to fourier embedding features which provide controllable beneficial high-frequency information when encoding numerics(integer or real features, positions, etc.). It shows connections to ALIBI for extrapolating pos encodings to longer sequnces as well.

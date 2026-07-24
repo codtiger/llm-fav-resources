@@ -11,7 +11,8 @@ A curated list of favorite resources and readings related to LLMs.
   How Jane Street LLM Team managed to collect, fine-tune, and verify LLMs for OCaml, given the fact that they have a bigger codebase in this language than most other online open source data, and how they managed to make the model and developer-friendly and task-oriented, while their datasets more amenable to reinforcement learning and verifiable rewards.
 
 ## Papers
-
+- [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903)
+    One of the earliest work demonstrating first signs of reasoing through Chain-of-Thought prompting and intermediate generation of reasoning traces for a 540B-parameter model.
 - [Mega: Moving Average Equipped Gated Attention](https://arxiv.org/pdf/2209.10655)
     Collection of interesting ideas combining gated networks with EMA representation of input sequences combined with single-head attention. A general case of S4 and Space-State Models. Shown competitive performance to the best transformer architectures at the time and S4. Dubious if this works for very long context or if it scales beyond ~500M params.
 - [Efficient Streaming Language Models with Attention Sinks](https://doi.org/10.48550/arXiv.2309.17453)
@@ -51,6 +52,8 @@ $T_W(C, x)=T_{W+\Delta W(Y)}(C \backslash Y, x) \quad \text { where } \Delta W(Y
 - [Titans: Learning to memorize at Test Time](https://arxiv.org/abs/2501.00663)
 - [Less is More: Recursive Reasoning with Tiny Networks](https://arxiv.org/pdf/2510.04871): An improvement to Hierarchial Reasoning models using a simplified 2-layer approach for recursive reasoning.
 - [ReAct: synergizing reasoning and acting in language models](https://arxiv.org/abs/2210.03629) One of the first papers demonstrating the loop of reasoning and acting(tool calling etc.) in LLMS shown to be effective when interleaved.
+- [How much do language models memorize?
+](https://arxiv.org/pdf/2505.24832) [ICML 2026] Information-theoric analysis of how much language models memorize, stated through the combination of intented memorization(generalization) and unintended memorization. Experimented through llms trained on random text data(0 and 1s) and actual text. Great experiments + beautiful formulation using previous definitions in the literature of information theory. A must read.
 
 ## Tutorials
 
@@ -113,6 +116,7 @@ print((out1 - out2).abs().max()) # tensor(1669.2500, device='cuda:0')
 
 - [How LLMs Scaled from 512 to 2M Context: A Technical Deep Dive
 ](https://amaarora.github.io/posts/2025-09-21-rope-context-extension.html)
+A journey through absolute PE to RoPE, to why extrapolation fails, linear interpolation and NTK-based methods all the way to the industry standard YaRN.
 
 - [Quantization from the ground up
 ](https://ngrok.com/blog/quantization)
@@ -125,3 +129,9 @@ A beautiful look at positional encodings from Jane Street through the lens of gr
 
 - [Fourier Feature Encoding](https://sair.synerise.com/fourier-feature-encoding/)
 A detour from LLM-related material, but shows the nice connection of sinusodial positional embeddings to fourier embedding features which provide controllable beneficial high-frequency information when encoding numerics(integer or real features, positions, etc.). It shows connections to ALIBI for extrapolating pos encodings to longer sequnces as well.
+
+- [Writing A Megakernel For LLM Decode - A Worklog
+](https://emre570.bearblog.dev/megakernel-decode/) An amazing tale through trials of megakernel implementation for decode at M=1. So many great lessons about profiling, and optimizing what is actually the bottleneck for the right setting(here decoding token by token for one query) not the elegant strategy that has the better flair.
+
+-[Scaling Laws, Carefully](https://lilianweng.github.io/posts/2026-06-24-scaling-laws)
+A detailed blog on the intricacices of scaling laws. A great primer on how to approach the problem of measuring scaling parameters, fitting curves, and the various dimensions the problem statement can be constructed in(data repitition is the most surprising by far imo)

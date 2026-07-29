@@ -133,5 +133,9 @@ A detour from LLM-related material, but shows the nice connection of sinusodial 
 - [Writing A Megakernel For LLM Decode - A Worklog
 ](https://emre570.bearblog.dev/megakernel-decode/) An amazing tale through trials of megakernel implementation for decode at M=1. So many great lessons about profiling, and optimizing what is actually the bottleneck for the right setting(here decoding token by token for one query) not the elegant strategy that has the better flair.
 
--[Scaling Laws, Carefully](https://lilianweng.github.io/posts/2026-06-24-scaling-laws)
+- [Scaling Laws, Carefully](https://lilianweng.github.io/posts/2026-06-24-scaling-laws)
 A detailed blog on the intricacices of scaling laws. A great primer on how to approach the problem of measuring scaling parameters, fitting curves, and the various dimensions the problem statement can be constructed in(data repitition is the most surprising by far imo)
+
+- [Sparse Linear Attention](https://www.haoyizhu.site/blog/sparse-linear-attention/)
+(Need to be translated to English) A nice explanation and derivation of linear attention, and the works around sparse linear attention from first order approximation of the softmax function. Beautifully builds up the blocks to the recent Gated Delta Attention(in Kimi-Linear or Kimi K3) illustrating how they induce sparsity enforced from previous work(e.g. Native Sparse Attention) into the linear formulation. Great blog if you want to know everything in linear attention variants mathematically, and how all of them can be derived from one another, their drawbacks and strengths.
+

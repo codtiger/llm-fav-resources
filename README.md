@@ -11,6 +11,8 @@ A curated list of favorite resources and readings related to LLMs.
   How Jane Street LLM Team managed to collect, fine-tune, and verify LLMs for OCaml, given the fact that they have a bigger codebase in this language than most other online open source data, and how they managed to make the model and developer-friendly and task-oriented, while their datasets more amenable to reinforcement learning and verifiable rewards.
 
 ## Papers
+- [Emergent Abilities of Large Language Models](https://arxiv.org/abs/2206.07682)
+    Earliest work discussing the unpredictable emergent abilities of large language models on different tasks at scale.
 - [Chain-of-Thought Prompting Elicits Reasoning in Large Language Models](https://arxiv.org/abs/2201.11903)
     One of the earliest work demonstrating first signs of reasoing through Chain-of-Thought prompting and intermediate generation of reasoning traces for a 540B-parameter model.
 - [Mega: Moving Average Equipped Gated Attention](https://arxiv.org/pdf/2209.10655)
@@ -23,8 +25,7 @@ A curated list of favorite resources and readings related to LLMs.
 - [Training Large Language Models to Reason in a
   Continuous Latent Space](https://arxiv.org/pdf/2412.06769)
   Training models to reason in latent space by taking last token embedding and feeding it back to the model without performing next word prection for a number of steps. Training is done by masking out output tokens one by one in each stage, instead allowing model to use latents and generate next latents freely.
-- [Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters
-  ](https://arxiv.org/abs/2408.03314)
+- [Scaling LLM Test-Time Compute Optimally can be More Effective than Scaling Model Parameters](https://arxiv.org/abs/2408.03314)
 
 - [Implicit Chain of Thought Reasoning via Knowledge Distillation](https://arxiv.org/abs/2311.01460)
 
@@ -54,6 +55,16 @@ $T_W(C, x)=T_{W+\Delta W(Y)}(C \backslash Y, x) \quad \text { where } \Delta W(Y
 - [ReAct: synergizing reasoning and acting in language models](https://arxiv.org/abs/2210.03629) One of the first papers demonstrating the loop of reasoning and acting(tool calling etc.) in LLMS shown to be effective when interleaved.
 - [How much do language models memorize?
 ](https://arxiv.org/pdf/2505.24832) [ICML 2026] Information-theoric analysis of how much language models memorize, stated through the combination of intented memorization(generalization) and unintended memorization. Experimented through llms trained on random text data(0 and 1s) and actual text. Great experiments + beautiful formulation using previous definitions in the literature of information theory. A must read.
+
+### Recurrence(?)
+**Dedicating a section to literature studying recurrence depth-wise either in inference or training.**
+
+-[Scaling up Test-Time Compute with Latent Reasoning:
+A Recurrent Depth Approach](https://arxiv.org/pdf/2502.05171)
+Scaling test-time recurrence through depth with full experiments all the way to 3.5 billion parameters and 800 billion tokens. Interesting observations.
+<p align="center">
+    <img src="assets/test-time-reccurence.png" width="500"></img>
+</p>
 
 ## Tutorials
 
@@ -138,4 +149,7 @@ A detailed blog on the intricacices of scaling laws. A great primer on how to ap
 
 - [Sparse Linear Attention](https://www.haoyizhu.site/blog/sparse-linear-attention/)
 (Need to be translated to English) A nice explanation and derivation of linear attention, and the works around sparse linear attention from first order approximation of the softmax function. Beautifully builds up the blocks to the recent Gated Delta Attention(in Kimi-Linear or Kimi K3) illustrating how they induce sparsity enforced from previous work(e.g. Native Sparse Attention) into the linear formulation. Great blog if you want to know everything in linear attention variants mathematically, and how all of them can be derived from one another, their drawbacks and strengths.
+
+- [How speculative decoding makes LLMs go brrr](https://leoniemonigatti.com/blog/speculative-decoding.html)
+A short blog fully outlining speculative decoding and probability chains of draft/target model, how it speeds up inference, and recent work in the literature for faster and more accurate draft responses.
 

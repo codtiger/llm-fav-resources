@@ -66,6 +66,8 @@ Scaling test-time recurrence through depth with full experiments all the way to 
     <img src="assets/test-time-reccurence.png" width="500"></img>
 </p>
 
+-[DeepLoop: Depth Scaling for Looped Transformers
+](https://arxiv.org/abs/2607.13491)
 ## Tutorials
 
 - [Build a Large Language Model (From Scratch)](https://github.com/rasbt/LLMs-from-scratch)
@@ -153,3 +155,7 @@ A detailed blog on the intricacices of scaling laws. A great primer on how to ap
 - [How speculative decoding makes LLMs go brrr](https://leoniemonigatti.com/blog/speculative-decoding.html)
 A short blog fully outlining speculative decoding and probability chains of draft/target model, how it speeds up inference, and recent work in the literature for faster and more accurate draft responses.
 
+- [Bits, Nats, Perplexity, and BPB](https://theorempath.com/topics/bits-nats-perplexity-bpb)
+The definitions of these four pretraining metrics used to compare models with different tokenizers in mind.
+
+-[LLM VRAM Guide] A really great guide with calculations showing how much VRAM models require at different quantization/ precisions, with KV cache size measured as well. Section 5's table is amazing if you already have a card looking for the best open local models.
